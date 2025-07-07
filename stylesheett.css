@@ -72,8 +72,7 @@ body{
   pointer-events: auto;
 }
 .wrapper .todoList{
-  max-height: 250px;
-  overflow-y: auto;
+  
 }
 .todoList li{
   position: relative;
