@@ -1,22 +1,22 @@
-// getting all required elements
+
 const inputBox = document.querySelector(".inputField input");
 const addBtn = document.querySelector(".inputField button");
 const todoList = document.querySelector(".todoList");
-/*const TopicList = document.querySelector(".TopicList");*/
+
 const deleteAllBtn = document.querySelector(".footer button");
 
-// onkeyup event
+
 inputBox.onkeyup = ()=>{
-  let userEnteredValue = inputBox.value; //getting user entered value
-  if(userEnteredValue.trim() != 0){ //if the user value isn't only spaces
-    addBtn.classList.add("active"); //active the add button
+  let userEnteredValue = inputBox.value; 
+  if(userEnteredValue.trim() != 0){ 
+    addBtn.classList.add("active"); 
   }else{
-    addBtn.classList.remove("active"); //unactive the add button
+    addBtn.classList.remove("active"); 
   }
 }
 
-showTasks(); //calling showTask function
-/*showTasks1(); //calling showTask function*/
+showTasks(); 
+
 addBtn.onclick = () => {
   let userEnteredValue = inputBox.value.trim();
   if (userEnteredValue === "") return;
@@ -24,7 +24,6 @@ addBtn.onclick = () => {
   let getLocalStorageData = localStorage.getItem("New Todo");
   let listArray = getLocalStorageData ? JSON.parse(getLocalStorageData) : [];
 
-  // Add task as object with text and checkbox state
   listArray.push({ text: userEnteredValue, checked: false });
 
   localStorage.setItem("New Todo", JSON.stringify(listArray));
@@ -62,16 +61,16 @@ function showTasks() {
   inputBox.value = "";
 }
 
-// delete task function
+
 function deleteTask(index){
   let getLocalStorageData = localStorage.getItem("New Todo");
   listArray = JSON.parse(getLocalStorageData);
-  listArray.splice(index, 1); //delete or remove the li
+  listArray.splice(index, 1); 
   localStorage.setItem("New Todo", JSON.stringify(listArray));
-  showTasks(); //call the showTasks function
+  showTasks(); 
 }
 
-// delete all tasks function
+
 deleteAllBtn.onclick = ()=>{
   let getLocalStorageData = localStorage.getItem("New Todo"); 
   if(getLocalStorageData == null){ 
